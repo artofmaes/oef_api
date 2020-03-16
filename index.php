@@ -42,6 +42,7 @@ if($count == 3 and  $last_part== "taken"){
         echo json_encode($data);
     }
 
+
 }else{
     print "Oops! Made a mistake?";
     print "count = $count, previous_part= $previous_part, last_part = $last_part";
