@@ -3,19 +3,36 @@
 
 class ApiActions
 {
- public function GetData( $sql )
- {
-     $dsn = "mysql:host=localhost;dbname=php2stedensteven";
-     $user = "root";
-     $passwd = "Xrkwq349";
 
-     $pdo = new PDO($dsn, $user, $passwd);
+    /**
+     * @return boolean
+     */
+    public function addData(){
+        global $container;
+        $sql = "INSERT INTO taak SET";
+        if($container->getPDOtoExecute($sql)){
+            return true;
+        }
 
-     $stm = $pdo->prepare($sql);
-     $stm->execute();
+    }
 
-     $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
-     return json_encode($rows);
+    /**
+     * @return boolean
+     */
+    public function updateData(){
+        global $container;
+        $sql = "";
+        if($container->getPDOtoExecute($sql)) return true;
+    }
 
- }
+    /**
+     * @return boolean
+     */
+    public function deleteData(){
+        global $container;
+        $sql = "DELETE FROM taak where taa_id='$last_part'";
+        if($container->getPDOtoExecute($sql)) return true;
+    }
+
+
 }
