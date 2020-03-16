@@ -30,6 +30,7 @@ class ApiActions
      */
     public function deleteData(){
         global $container;
+        global $last_part;
         $sql = "DELETE FROM taak where taa_id='$last_part'";
         if($container->getPDOtoExecute($sql)) return true;
     }
