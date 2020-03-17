@@ -3,7 +3,6 @@
 
 class Container
 {
-    private $apiActions;
     private $configuration;
     private $pdo;
     private $taak;
@@ -38,18 +37,6 @@ class Container
         return $rows;
     }
 
-    /**
-     * @param $sql
-     * @return bool
-     */
-    public function getPDOtoExecute($sql){
-        $pdo = $this->getPDO();
-
-        $stm = $pdo->prepare($sql);
-
-        if ( $stm->execute() ) return true;
-        else return false;
-    }
 
     /**
      * @return ApiActions
