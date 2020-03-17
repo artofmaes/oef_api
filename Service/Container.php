@@ -6,6 +6,7 @@ class Container
     private $apiActions;
     private $configuration;
     private $pdo;
+    private $taak;
 
     public function __construct(array $configuration){
         $this->configuration = $configuration;
@@ -51,10 +52,11 @@ class Container
     }
 
     /**
-     * @return mixed
+     * @return ApiActions
      */
     public function getApiActions()
     {
-        return $this->apiActions;
+        if ($this->taak === null) $this->taak = new ApiActions($this->getPDO());
+        return $this->taak;
     }
 }

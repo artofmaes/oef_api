@@ -18,28 +18,28 @@ if($count == 3 and  $last_part== "taken"){
    if ($_SERVER['REQUEST_METHOD']=='POST'){
        //add code here
 
-       $data = $apiActions->addData();
-       echo "cool, you added something";
-       echo json_encode($data);
+       $apiActions->addData();
+      // echo "cool, you added something";
+
    }
 
 
-}elseif($count == 4 and $previous_part =="taak" and is_numeric($last_part)){
+}elseif($count == 4 and $previous_part =="taak"){
     if ($_SERVER['REQUEST_METHOD'] == 'GET'){
         $data = $container->GetPDOData("SELECT * from taak where taa_id = '".$last_part."'");
         echo json_encode($data);
     }
     if ($_SERVER['REQUEST_METHOD']=='PUT'){
         //add code here
-        $data = $apiActions->updateData();
-        echo "cool, you updated something";
-        echo json_encode($data);
+       $apiActions->updateData($last_part);
+       // echo "cool, you updated something";
+
     }
     if ($_SERVER['REQUEST_METHOD']=='DELETE'){
         //add code here
-        $data = $apiActions->deleteData();
-        echo "cool, you deleted something";
-        echo json_encode($data);
+        $apiActions->deleteData($last_part);
+        //echo "cool, you deleted something";
+
     }
 
 
