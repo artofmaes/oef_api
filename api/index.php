@@ -1,15 +1,16 @@
 <?php
-require_once "autoload.php";
-$apiActions = $container->getApiActions();
+require_once "../../lib/autoload.php";
+$apiActions = $Container->getApiActions();
+$db = $Container->getDBM();
 $uri_parts = explode("/",$_SERVER['REQUEST_URI']);
 $count = count($uri_parts);
 $last_part = $uri_parts[$count-1];
 $previous_part = $uri_parts[$count-2];
 
-if($count == 3 and  $last_part== "taken"){
+if($count == 5 and  $last_part== "taken"){
 
    if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-       $data = $container->getPDOData("SELECT * from taak");
+       $data = $db->GetData("SELECT * from taak");
        echo json_encode($data);
    }
    if ($_SERVER['REQUEST_METHOD']=='POST'){
@@ -17,9 +18,9 @@ if($count == 3 and  $last_part== "taken"){
    }
 
 
-}elseif($count == 4 and $previous_part =="taak"){
+}elseif($count == 6 and $previous_part =="taak"){
     if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-        $data = $container->getPDOData("SELECT * from taak where taa_id = '".$last_part."'");
+        $data = $db->GetData("SELECT * from taak where taa_id = '".$last_part."'");
         echo json_encode($data);
     }
     if ($_SERVER['REQUEST_METHOD']=='PUT'){
